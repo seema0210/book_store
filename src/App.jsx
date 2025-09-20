@@ -1,15 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from './components/Dashboard';
+import BookForm from './components/BookForm';
+import BookFormUpdate from "./components/BookFormUpdate";
 
 function App() {
-
   return (
-    <>
-       hi seema     
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/add-book" element={<BookForm />} />
+        <Route path="/update-book/:id" element={<BookFormUpdate />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
