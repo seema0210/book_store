@@ -22,7 +22,7 @@ import {
   Delete as DeleteIcon
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { getAllBookData } from "../api/HandleAPI";
+import { deleteBookData, getAllBookData } from "../api/HandleAPI";
 
 const Dashboard = () => {
   
@@ -33,6 +33,10 @@ const Dashboard = () => {
   }, [])
   console.log('allData', allData);
   
+  const handleDeleteClick = (id) => {
+    deleteBookData(id).then((data) => console.log(data))
+    getAllBookData().then((data)=>setAllData(data))
+  }
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
@@ -96,7 +100,7 @@ const Dashboard = () => {
 
                           <IconButton
                             color="error"
-                            // onClick={() => handleDeleteClick(book)}
+                            onClick={() => handleDeleteClick(b._id)}
                             aria-label="delete"
                           >
                             <DeleteIcon />
